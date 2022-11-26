@@ -2,8 +2,8 @@ import express from "express";
 import mongoose from "mongoose";
 import bodyParser from "body-parser";
 import ApiRoutes from "./src/routes";
-
 import dotenv from "dotenv";
+import cors from "cors";
 
 dotenv.config();
 
@@ -27,6 +27,7 @@ const app = express();
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(cors());
 app.use("/api", ApiRoutes);
 
 const PORT = process.env.NODE_DOCKER_PORT;
